@@ -32,7 +32,7 @@ This project uses machine learning to estimate hard-to-measure temperatures in a
 - Random Forest Regressor
 - Support Vector Regression (SVR) / LinearSVR
 
-Best model saved as `best_model.joblib` (usually Random Forest performs best on this dataset).
+Model not saved because of github's file size constraints
 
 ## Project Structure
 

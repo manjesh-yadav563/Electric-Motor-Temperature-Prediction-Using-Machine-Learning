@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Motor Temperature Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f4f4f4; }
+        h1 { text-align: center; color: #333; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.1); }
+        label { display: block; margin: 15px 0 5px; font-weight: bold; }
+        input[type="text"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        input[type="submit"] { background: #007BFF; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 20px; }
+        input[type="submit"]:hover { background: #0056b3; }
+        .result { margin-top: 30px; padding: 15px; background: #e9ffe9; border: 1px solid #28a745; border-radius: 5px; font-size: 18px; text-align: center; }
+        .error { background: #ffebee; border: 1px solid #dc3545; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Electric Motor Temperature Prediction</h1>
+    <p style="text-align:center;">Fill in the details below to predict Permanent Magnet surface temperature (representing rotor temperature).</p>
+
+    <form action="/y_predict" method="POST">
+        <label>Ambient temperature</label>
+        <input type="text" name="ambient" required>
+
+        <label>Coolant temperature</label>
+        <input type="text" name="coolant" required>
+
+        <label>Voltage d-component (u_d)</label>
+        <input type="text" name="u_d" required>
+
+        <label>Voltage q-component (u_q)</label>
+        <input type="text" name="u_q" required>
+
+        <label>Motor speed</label>
+        <input type="text" name="motor_speed" required>
+
+        <label>Current d-component (i_d)</label>
+        <input type="text" name="i_d" required>
+
+        <label>Current q-component (i_q)</label>
+        <input type="text" name="i_q" required>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+    <div class="result {% if 'Error' in prediction_text %}error{% endif %}">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>

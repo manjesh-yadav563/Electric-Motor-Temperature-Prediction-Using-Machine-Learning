@@ -34,5 +34,5 @@ This project uses machine learning to estimate hard-to-measure temperatures in a
 
 Model not saved because of github's file size constraints
 
-## Project Structure
+
 
